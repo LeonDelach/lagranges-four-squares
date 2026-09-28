@@ -60,6 +60,7 @@ def four_squares(n):
         return result[0], result[1], result[2], 0
     s = isqrt(n)
     return sum_of_two_squares(n - s * s) + (s, 0)
+
     
     '''
     # If n is zero, return four zeros.
