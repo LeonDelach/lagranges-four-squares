@@ -33,13 +33,9 @@ from main import four_squares
 four_squares(106369249365575352836589875696130383747)
 ```
 
-**Optional speed-up:** if [`gmpy2`](https://gmpy2.readthedocs.io/) is
-installed, `main.py` automatically uses its compiled primality test
-instead of the pure-Python fallback, which is noticeably faster for
-very large inputs. Nothing else changes — it's a drop-in optimization,
-not a requirement. Install it with `pip install gmpy2` if you want it;
-the code works fine without it (CodeWars itself typically won't have
-it available).
+Primality testing uses the pure-Python Miller–Rabin implementation in
+`main.py`, with a small-prime pre-filter. No third-party packages are
+required.
 
 ## Submitting to CodeWars
 
@@ -160,10 +156,11 @@ manual versions of this algorithm needed.)
 
 ### 7. Lagrange's four-square theorem
 
-Finally, this is what guarantees the whole approach can't fail:
-**Lagrange's four-square theorem** states that *every* non-negative
-integer is a sum of four squares, no exceptions. Steps 1–6 are simply a
-constructive proof of this fact, turned into an algorithm.
+**Lagrange's four-square theorem** guarantees that every non-negative
+integer has a four-square representation. It does not, by itself,
+guarantee that this particular prime search finds a suitable candidate
+quickly; the method is practical, but its search does not have a stated
+worst-case runtime guarantee here.
 
 📖 [Wikipedia — Lagrange's four-square theorem](https://en.wikipedia.org/wiki/Lagrange%27s_four-square_theorem)
 
